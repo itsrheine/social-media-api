@@ -9,7 +9,6 @@ const ThoughtSchema = new Thought({
         createdAt: {
             type: Date,
             default: Date.now,
-
         },
         username: {
             type: String,

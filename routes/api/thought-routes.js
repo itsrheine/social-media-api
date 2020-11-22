@@ -11,10 +11,10 @@ const {
 } = require('../../controllers/thought-controller')
 
 router.route('/')
-    .get(getAllThoughts);
+    .get(getAllThoughts)
+    .post(createThought);
 
-router.route('/:userId')    
-    .post(createThought)
+router.route('/:id')  
     .get(getThoughtById)
     .put(updateThought)
     .delete(deleteThought);

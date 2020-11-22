@@ -27,21 +27,21 @@ const thoughtController = {
             });
     },
 
-    createThought({ body }, res) {
+    createThought({ params, body }, res) {
         Thought.create(body)
-            .then(dbThoughtData => {
+            .then(({ _id }) => {
                 return User.findOneAndUpdate(
-                    { _id: body.userId },
-                    { $push: { thoughts: dbThoughtData._id }},
+                    { _id: params.userId },
+                    { $push: { thoughts: _id } },
                     { new: true }
-                )
+                );
             })
             .then(dbUserData => {
                 if (!dbUserData) {
-                    res.status(404).json({ message: 'No user found with this id!' });
+                    res.status(404).json({ message: 'No thoughts found with this id!' });
                     return;
                 }
-                res.json(dbUserData);
+                res.json({ message: "Thought submitted!" });
             })
             .catch(err => {
                 console.log(err);
@@ -71,7 +71,7 @@ const thoughtController = {
                 }
                 return Thought.findOneAndUpdate(
                     { thoughts: params.id },
-                    { $pull: { thoughts: params.id }},
+                    { $pull: { thoughts: params.id } },
                     { new: true }
                 );
             })
@@ -105,10 +105,10 @@ const thoughtController = {
     },
 
     // update to remove a reaction but not remove the user
-    removeaReaction({ params }, res){
+    removeaReaction({ params }, res) {
         Thought.findByIdAndUpdate(
             { _id: params.thoughtId },
-            { $pull: { reactions: params.reactionId} },
+            { $pull: { reactions: params.reactionId } },
             { new: true })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
@@ -121,7 +121,7 @@ const thoughtController = {
                 console.log(err);
                 res.status(400).json(err);
             });
-        }
+    }
 }
 
 

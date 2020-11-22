@@ -7,7 +7,7 @@ const ReactionSchema = new Schema({
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId()
     },
-    reationBody: {
+    reactionBody: {
         type: String,
         required: true,
         maxlength: 280
@@ -30,7 +30,8 @@ const ReactionSchema = new Schema({
     }
 );
 
-const ThoughtSchema = new Thought({
+
+const ThoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
@@ -52,7 +53,8 @@ const ThoughtSchema = new Thought({
         toJSON: {
             virtuals: true,
             getters: true
-        }
+        },
+        id: false
     }
 );
 

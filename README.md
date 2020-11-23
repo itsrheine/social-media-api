@@ -38,6 +38,7 @@ An Insomnia Core based application that allows users to create, add, modify user
 
 # Screencast
 - <a href="https://drive.google.com/file/d/1ax8faRKNxBb-0rqtbRBLhtbHa-5zgfE7/view">Screencast #1 (User)</a>
+- <a href="https://drive.google.com/file/d/1H2156P6dBeNft3FXC2Dncrfy33mDrROp/view">Screencast #2 (Friend)</a>
 
 # Questions
 If you have any questions or concerns, please feel free to reach out to my:
